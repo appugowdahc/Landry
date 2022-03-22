@@ -7,7 +7,7 @@ import "./comp.css"
 function Footer() {
 
     return (
-        <div>
+        <div className='footerpart'>
             <Grid container className='center refer'>
                 <Grid item xs={12}>
                     <div className='colortext footerh1'>Now Refer & Earn ₹500 for every referral*</div>

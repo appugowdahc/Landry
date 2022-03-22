@@ -1,38 +1,21 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 // import clsx from 'clsx';
-import{ Grid,TextField,Button} from '@material-ui/core';
+import{Grid,TextField,Button} from '@material-ui/core';
+import {useNavigate} from "react-router-dom"
+
+import { faLock } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import "./comp.css"
 const useStyles = makeStyles({
-  root: {
-    flexGrow: 1,
-   
-  },
-  abRoot: {
-    backgroundColor: "white",
-    color:"black"
-  },
-  tabs:{
-    float:'right',
-    color:" #4552C1",
-    padding:'20px'
-    
-  },
+  
   sname:{
-    // textalign:' ',
-    // font: 'normal normal medium 32px/60px Avenir',
-    // letterspacing:' 1.28px',
-    // color:' #4552C1',
-    // text-transform: 'uppercase',
-    // opacity: 1,
     textAlign:"left",
-    color:' white',
+    color:'white !important' ,
     backgroundColor:'#5861AE'
 
 },
-  flextab:{
-    display:'flex'
-  },
   sname2:{
     color:"#4552C1",
     fontWeight:'700',
@@ -40,33 +23,44 @@ const useStyles = makeStyles({
     marginTop:'3rem'
   }
 });
+
 function Registration() {
+  const navigate = useNavigate();
+  const [ value,setValue]=useState('')
   const classes = useStyles();
   return (
     <div>
       <Grid container>
           <Grid item xs={6}> 
-              <div class="floatleft" >
-                <div class="leftpart colortext">Laundry Service</div>
+              <div className="floatleft" >
+                <div className="leftpart colortext">Laundry Service</div>
                 <div className='mt'>Doorstep Wash & Dryclean Service</div><br/>
-                <div className='mt'>Don't Have Ar Account?</div><br/>
+                <div className='mt'>Don't Have An Account?</div><br/>
                 {/* <Button variant="outlined">Register</Button> */}
-                <Button variant="outlined" size="medium" color='#4552C1'> Register</Button>
+                <Button variant="outlined" size="medium" className='btn2' onClick={()=>navigate("/register")}> Register</Button>
               </div>  
           </Grid>
           <Grid item xs={6} className='rightSignIn'>
               <Grid >
               <div className={classes.sname2}>Sign In</div>
-              <TextField id="standard-basic" label="Mobile/Email" variant="standard" /><br/>
-              <div id="error masg"></div>
+              <TextField id="standard-basic" label="Mobile/Email" variant="standard"/><br/>
+              <div id="error masg" vlaue={value}></div>
               <br></br>
-              <TextField id="outlined-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"  />
-          <div class="colortext">Forget Password?</div>
+              
+              
+               
+              <div className='pass'>
+              <div><TextField id="outlined-password-input" label="Password" type="password" value={value} 
+              onChange={(e)=> setValue(e.target.value)} 
+              error={!value} 
+              helperText={!value? 'Required' :'Do not share your password with anyone'} autoComplete="current-password"  /></div>
+              <div className='lockicon'><FontAwesomeIcon icon={faLock}/></div>
+              </div>
+              
+              
+          <div className="colortext">Forget Password?</div>
           <br></br>
-          <Button className={classes.sname}>Sign In</Button>
+          <Button className={classes.sname}   onClick={()=>navigate("/orders")} >Sign In</Button>
               </Grid>
           </Grid>
         </Grid>

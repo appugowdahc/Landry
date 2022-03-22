@@ -6,7 +6,6 @@ import "./comp.css"
 const useStyles = makeStyles({
     root: {
         flexGrow: 1,
-
     },
     abRoot: {
         backgroundColor: "white",
@@ -47,7 +46,7 @@ function Header() {
                     <AppBar position="static" classes={{ root: classes.abRoot, positionStatic: classes.abStatic }}>
                         <Toolbar>
                             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                                <span class="colortext">LAUNDRY</span>
+                                <span className="colortext">LAUNDRY</span>
                             </Typography>
                             <div className='tabs'>
 

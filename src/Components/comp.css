@@ -18,9 +18,17 @@ body{
     10rem 10rem 10rem;
 
 }
+.chek{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .tabs{
   text-align: center;
   padding:12px;
+}
+.MuiCheckbox-colorSecondary.Mui-checked {
+    color: #5861AE !important;
 }
 .appname {
     text-align: left;
@@ -56,8 +64,15 @@ opacity: 1;
 /* UI Properties */
 background: #F8F9FF 0% 0% no-repeat padding-box;
 opacity: 1;
+display: flex;
+flex-direction: row !important;
+justify-content: center;
 }
-
+.MuiBox-root-12 {
+    display: flex;
+    align-items: center !important;
+    flex-direction: row-reverse ;
+}
 .box {
     display: flex;
     float: left;
@@ -81,13 +96,21 @@ input{
 }
 .MuiFormControl-root {
     width: 18rem !important;
+    margin-top: 20px !important;
 }
 
 label + .MuiInput-formControl {
     margin-top: 30px !important;
 }
+Button{
+    border: 2px solid #4552C1 !important;
+    color:#4552C1 !important ;
+    font-family: Open Sans, Bold !important;
+    font-size:15px;
+}
 Button:hover{
     color: #f0f0fa;
+   
     background-color: #4552C1 !important;
 }
 .leftpart{
@@ -97,9 +120,20 @@ Button:hover{
    align-items: left;
    text-transform: capitalize;
 }
+.leftpart-1{
+    font-weight: 700;
+    text-align: left;
+    font-size:62px ;
+    /* font: normal normal 900 62px/80px ; */
+    letter-spacing: 2.48px;
+    color: #5861AE;
+    text-transform: capitalize;
+    opacity: 1;
+}
 .MuiGrid-grid-xs-6 {
     display: flex !important;
     justify-content: center;
+    flex-direction: column;
 }
 .center{
     text-align: center !important;
@@ -193,6 +227,11 @@ opacity: 1;
     display: flex;
     justify-content: center;
 }
+.RegBtn{
+    margin: 40px 20px 40px 20px;
+    display: flex;
+    justify-content: center;
+}
 .foot{
     text-align: center;
     display: flex;
@@ -206,13 +245,29 @@ opacity: 1;
 .content {
     top: 1144px;
     left: 670px;
-    width: 105px;
+    width: 148px;
     height: 18px;
     margin: 10px 0px 10px 0px;
     text-align: center;
     font: normal normal normal 12px/24px ;
     letter-spacing: 0.12px;
     color: #FFFFFF;
+    opacity: 1;
+}
+.lg{
+    text-align: left;
+    /* font: normal normal normal 16px/26px Avenir; */
+    letter-spacing: 0.64px;
+    color: #565657;
+    text-transform: capitalize;
+    opacity: 1;
+}
+.lg-1{
+    text-align: left;
+    font: normal normal normal 20px/32px Avenir;
+    letter-spacing: 0.8px;
+    color: #565657;
+    text-transform: capitalize;
     opacity: 1;
 }
 .mt{
@@ -235,3 +290,25 @@ opacity: 1;
     text-transform: uppercase;
     opacity: 1;
 }
+.sname3{    
+    text-align: left;
+    font-size: 32px; 
+    letter-spacing: 1.28px;
+    color: #5861AE;
+    text-transform: uppercase;
+    opacity: 1;
+  }
+  .regFields {
+    display: flex;
+    width: 730px;
+    padding: 30px;
+    justify-content: center;
+}
+  .floatleft2 {
+    margin: 5rem 10rem -1rem 4rem;
+}
+.pass {
+    display: flex;
+    align-items: center;
+}
+
