@@ -55,7 +55,7 @@ const handleChange=e=>{
           <div className='regFields'>
             <Grid item xs={6} className='col1'>
               <div className='sname3'>Register</div>
-              <TextField id="standard-basic" label="Name" variant="standard" name="name" value={user.name} onChange={handleChange} /><br />
+              <TextField id="standard-basic1" label="Name" variant="standard" name="name" value={user.name} onChange={handleChange} /><br />
               <TextField label="Phone Number" name="phoneno" value={user.phoneno} onChange={handleChange}   variant="standard" />
               
               <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
@@ -82,7 +82,7 @@ const handleChange=e=>{
 
             </Grid>
             <Grid item xs={6} className='col2' >
-              <TextField id="standard-basic" label="Mobile/Email" variant="standard" name="email" value={user.email} onChange={handleChange}  />
+              <TextField id="standard-basic2" label="Mobile/Email" variant="standard" name="email" value={user.email} onChange={handleChange}  />
               <TextField id="outlined-password-input" label="Password" type="password" autoComplete="current-password"  name="password" value={user.password} onChange={handleChange} />
 
               <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>

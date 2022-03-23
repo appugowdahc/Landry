@@ -109,8 +109,7 @@ Button{
     font-size:15px;
 }
 Button:hover{
-    color: #f0f0fa;
-   
+    color: #f0f0fa !important;
     background-color: #4552C1 !important;
 }
 .leftpart{
