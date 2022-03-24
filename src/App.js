@@ -5,8 +5,8 @@ import React from 'react'
 import "./Components/comp.css"
 import Order from './Components/Order';
 import Header from './Components/Header';
-import Login from './Components/Login copy';
-import Registration from './Components/Registrationcopy';
+import Login from './Components/Login';
+import Registration from './Components/Registration';
 import Footer from './Components/Footer';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
 import CreateOrders from './Components/CreateOrders';
