@@ -46,4 +46,19 @@ Button:hover{
     opacity: 1;
     width: 63px;
     text-align: center;
+    cursor:pointer;
+}
+.cancelPro{
+    float: right;
+}
+.cancelPro button{
+    margin: 20px;
+}
+.bt2{
+    color: #f0f0fa !important;
+    background-color: #4552C1 !important;
+}
+.bt2:hover{
+    background-color: #f0f0fa !important;
+   color: #4552C1 !important;
 }
