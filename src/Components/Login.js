@@ -34,12 +34,12 @@ function Registration() {
     event.preventDefault();
     const response=await fetch('http://localhost:5000/login',{
       method:'POST',
-      headers:{
+      headers:{  
         "Content-Type":'application/json',
       },
-      body:JSON.stringify({email,password}),
+      body:JSON.stringify({email,password}),   
     })
-    const data =await response.json()
+    const data =await response.json()  
     if (data.user){
       localStorage.setItem('token',data.user)
       alert('Login Successful')

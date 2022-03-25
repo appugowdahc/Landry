@@ -221,8 +221,9 @@ box-shadow: 0px -3px 6px #0000000B;
 opacity: 1;
 }
 
-.icons{
-    margin-top: 20px;
+.icons {
+    height: 18px;
+    margin-top: 14px;
     display: flex;
     justify-content: center;
 }
