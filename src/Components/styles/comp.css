@@ -184,7 +184,7 @@ opacity: 1;
     padding: 10px;
 }
 .fb{
-    background: transparent url('images/fb.png') 0% 0% no-repeat padding-box;
+    background: transparent url('../images/fb.png') 0% 0% no-repeat padding-box;
     top: 1010px;
     left: 1109px;
     width: 20px;
@@ -198,7 +198,7 @@ opacity: 1;
     width: 19px;
     height: 19px;
     /* UI Properties */
-    background: transparent url('images/insta.png') 0% 0% no-repeat padding-box;
+    background: transparent url('../images/insta.png') 0% 0% no-repeat padding-box;
     opacity: 0.6; 
     padding: 10px; 
 }
@@ -208,7 +208,7 @@ opacity: 1;
     width: 19px;
     height: 19px;
     /* UI Properties */
-    background: transparent url('images/lkd.png') 0% 0% no-repeat padding-box;
+    background: transparent url('../images/lkd.png') 0% 0% no-repeat padding-box;
     opacity: 0.6;  
 }
 .refer{
@@ -289,6 +289,9 @@ opacity: 1;
     color: #4552C1;
     text-transform: uppercase;
     opacity: 1;
+}
+.active{
+    background-color: white;
 }
 .sname3{    
     text-align: left;

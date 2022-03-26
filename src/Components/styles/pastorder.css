@@ -141,13 +141,22 @@ div.Alert-Header{
     /* min-width: 644px; */
 }
 
+.btncomponent{
+    margin-right: 30px !important ;
+}
 
 .css-11xur9t-MuiPaper-root-MuiTableContainer-root {
     padding-left: 70px !important;
 }
 
-/* .maindivOrder{
-    display: flex;
-    align-items: center;
-    padding-left: 45%;
-} */
+.InputComponent{
+    width: 200px !important;
+}
+.CancelBtn{
+    color: red !important;
+    border:none !important;
+}
+.CancelBtn:hover{
+    background-color: white !important;
+    color: red !important;
+}

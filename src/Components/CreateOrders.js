@@ -7,6 +7,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import axios from 'axios'
 
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
@@ -29,11 +30,11 @@ import bleach1 from "./images/bleach_blur.png"
 import bleach from "./images/bleach.jpg"
 import wash1 from "./images/wash_blur.jpg"
 import wash from "./images/wash.png"
-import "./order.css";
+import "./styles/order.css";
 import { faCircleCheck, faHome ,faCirclePlus ,faBars} from "@fortawesome/free-solid-svg-icons";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {Link ,useNavigate} from "react-router-dom"
+import  {useNavigate ,Link } from "react-router-dom"
 const style = {
   position: 'absolute',
   top: '50%',
@@ -74,6 +75,7 @@ function CreateOrders() {
     "Pressing": 15, "Folding": 10, "Chemical-washing": 25
   }
   const [product, setproduct] = useState([]);
+
   const [expression, setexpression] = useState(["-", "-", "-", "-", "-", "-", "-"])
   const [cost, setcost] = useState(0);
   const [reset, setreset] = useState(false)
@@ -122,18 +124,13 @@ function CreateOrders() {
 
     const demoproduct = [...product]
     demoproduct.push(item)
-    console.log("demo", demoproduct)
+    
     setproduct(demoproduct)
     console.log(product)
     setreset(true)
 
 
 
-
-
-    // console.log("item",item)
-    console.log("product", product)
-    // console.log("expression",expression)
   }
 
   function resetbutton(e) {
@@ -143,6 +140,8 @@ function CreateOrders() {
     changecolor[parseInt(e.target.id) + 2] = false
     changecolor[parseInt(e.target.id) + 3] = false
     setcolor(changecolor)
+
+
     const demoproduct = [...product]
     demoproduct.pop(item)
     setproduct(demoproduct)
@@ -161,34 +160,55 @@ function CreateOrders() {
   // const confirmOpen = () =>  setvalue(true);
   const confirmClose = () =>  setvalue(false);
   
-  const Create=async(event)=>{
-    setvalue(true)
-    event.preventDefault();
-    const response=await fetch('http://localhost:5000/order',{
-      method: 'POST', // *GET, POST, PUT, DELETE, etc.
-      mode: 'cors', // no-cors, *cors, same-origin
-      cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-      credentials: 'same-origin', // include, *same-origin, omit
-      headers:{  
-        "Content-Type":'application/json',
+  // const Create=async(event)=>{
+  //   setvalue(true)
+  //   event.preventDefault();
+  //   const response=await fetch('http://localhost:5000/order',{
+  //     method: 'POST', // *GET, POST, PUT, DELETE, etc.
+  //     mode: 'cors', // no-cors, *cors, same-origin
+  //     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+  //     credentials: 'same-origin', // include, *same-origin, omit
+  //     headers:{  
+  //       "Content-Type":'application/json',
 
-      },
-      body:JSON.stringify({products:product}),
+  //     },
+  //     body:JSON.stringify({products:product}),
 
-    })
+  //   })
     
     
-    const data =await response.json()
-    console.log(data)
-    if (data.products){  
-      localStorage.setItem('token',data.products)
-      alert('order created')
-      navigate('/orders')
-    }else{
-      alert('please place the order')
-    }
+  //   const data =await response.json()
+  //   console.log('products are:= ',data)
+  //   if (data.products){  
+  //     localStorage.setItem('token',data.products)
+  //     alert('order created')
+  //     navigate('/orders')
+  //   }else{
+  //     alert('please place the order')
+  //   }
    
-} 
+// } 
+
+const Create = () => {
+  setvalue(true)
+  // console.log("order palce clicked");
+  const token = localStorage.getItem("token")
+  
+  let config = {
+      headers: {
+          Authorization: 'Bearer ' + token
+      }
+    }
+  axios.post("http://localhost:5000/orders",config, {data:product})
+    .then(res => {
+      console.log(res);
+      
+    })
+    .catch(err => console.log(err)
+    );
+
+}
+
 
 
   return (
@@ -197,13 +217,13 @@ function CreateOrders() {
         <div className='ordersdiv'>
           <div className='sidetabs'>
             <div className='divicon'>
-              <FontAwesomeIcon className='icons' icon={faHome}  />
+              <FontAwesomeIcon className='icons' icon={faHome} />
             </div>
             <div className='divicon active'>
               <FontAwesomeIcon className='icons' icon={faCirclePlus}  />
             </div>
             <div className='divicon'>
-              <FontAwesomeIcon className='icons' icon={faBars} />
+              <FontAwesomeIcon className='icons' icon={faBars} onClick={()=> navigate("./PastOrders")} />
             </div>
 
           </div>
@@ -348,10 +368,10 @@ function CreateOrders() {
             </TableContainer>
 
             <div className="cancelPro">
-              <Button>Cancel</Button>
+              <Button  onClick={()=> navigate("./PastOrders")} >Cancel</Button>
               <Button className="bt2" onClick={handleOpen}>Proceed</Button>
             </div>
-
+            {/* -------------Modal box 1------------- */}
             <Modal
               open={open}
               onClose={handleClose}
@@ -365,7 +385,7 @@ function CreateOrders() {
                 <div className="store">
                   <div className='storeloc location'>Store Location<br />Jp Nagar</div>
                   <div className='storeadd location'>Store Address<br />Near phone booth, 10th road</div>
-                  <div className='storephone location'>Phone<br />91 9999999999</div>
+                  <div className='storephone location'>Phone<br />91 97856123356</div>
                 </div>
                 <div className='details'>
                   <small className='orderdetails'>Order details</small>
@@ -374,7 +394,7 @@ function CreateOrders() {
                       <div className='solo2'>{prod.actions.map(action => <i>{action},</i>)}</div>
                       <div className='solo3'>{prod.quantity} X {parseInt(prod.price / prod.quantity)} = <b Style="color:#5861AE">{prod.price}</b> </div> <hr></hr> </div>)}
                        <div className="totalPrice">
-                       <div className='subtotal'>Sub total: <b className='numbers'>{product.reduce((acc, curr) => acc + parseInt(curr.price), 0) - 90}</b></div>
+                       <div className='subtotal'>Sub total: <b className='numbers'>{product.reduce((acc,curr)=> acc+parseInt(curr.price),0)-90}</b></div>
                   <div className='charges' >Pickup charges: <b className='numbers'>90</b></div>
                   <div className='total' Style="padding-top: 13px;"><b className='final'>Total:   Rs {product.reduce((acc, curr) => acc + parseInt(curr.price), 0)}</b></div>
                        </div>
@@ -389,7 +409,7 @@ function CreateOrders() {
                 <div className="footer"><Button onClick={Create}>Confirm</Button></div>
               </Box>
             </Modal>
-
+            {/*-------------- Modal box 2 -------------*/}
             <Modal
               open={value}
               onClose={confirmClose}
@@ -403,7 +423,6 @@ function CreateOrders() {
                 </Typography>
                 
                  <div className="gottoOrder"><Link to="./PastOrders">Go to orders</Link></div>
-               
               </Box>
             </Modal>
 

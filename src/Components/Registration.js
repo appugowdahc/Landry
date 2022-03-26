@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import { Grid, TextField, Button, Checkbox } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-
+import "./styles/comp.css"
 
 import { useNavigate } from "react-router-dom"
 
-
+import Ref from "./Ref"
 const useStyles = makeStyles({
 
   sname: {
@@ -57,10 +57,8 @@ function Registration() {
 
   const classes = useStyles();
   return (
-
-
-
-    <Grid container>
+   <div>
+      <Grid container>
       <Grid item xs={4}>
         <div className="floatleft2" >
           <div className="leftpart-1 colortext">Laundry Service</div>
@@ -100,6 +98,8 @@ function Registration() {
         </Grid>
       </Grid>
     </Grid>
+    <Ref/>
+   </div>
   )
 }
 

@@ -11,7 +11,7 @@ import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import CloseIcon from '@mui/icons-material/Close';
-import { useNavigate } from "react-router-dom"
+import {useNavigate } from "react-router-dom"
 
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
@@ -106,38 +106,40 @@ export default function PastOrdersTable() {
   }]
 
 
-      // const handleStatus = (e) => {
+      // const cancelClick = (e) => {
       //   setOpen(false);
-      //   // orders.map((order,index) => {
-      //   //   index + 1 === Id ? order.status = "cancelled" : console.log(order.status)
+      //   orders.map((order,index) => {
+      //     index + 1 === Id ? order.status = "cancelled" : console.log(order.status)
           
-      //   // })
+      //   })
       // }
 
+      
+
     // const AlertWord = () => "Alert";
-    function homeClick() {
-      navigate("/")   
-    }
-    function createClick() {
-      navigate('/')   
-    }
-    function ordersClick() {
-      // if(orders.length === 0){navigate('/orders')} else{navigate('pastorders')}
-      navigate('/')
-    }
+    // function homeClick() {
+    //   navigate("/")   
+    // }
+    // function createClick() {
+    //   navigate('/createOrders')   
+    // }
+    // function ordersClick() {
+    //   // if(orders.length === 0){navigate('/orders')} else{navigate('pastorders')}
+    //   navigate('/')
+    // }
 
 
   return (
     <div className="PastOrdersContent">
       <div className='sidetabs'>
           <div className='divicon'>
-            <FontAwesomeIcon className='icons' icon={faHome} onClick={homeClick()} />
+            <FontAwesomeIcon className='icons' icon={faHome}/>
           </div>
           <div className='divicon'>
-            <FontAwesomeIcon className='icons' icon={faCirclePlus} onClick={createClick()} />
+           <FontAwesomeIcon className='icons' icon={faCirclePlus}  onClick={()=>navigate(-1)}/>
           </div>
-          <div className='divicon'>
-            <FontAwesomeIcon className='icons' icon={faBars} onClick={ordersClick()} />
+          <div className='divicon active'>
+            <FontAwesomeIcon className='icons' icon={faBars} />
           </div>
         </div>
       {orders.length === 0 && 
@@ -152,8 +154,8 @@ export default function PastOrdersTable() {
             <strong className="cntHead">Orders | {orders.length}</strong>
           </div>
           <div className="TopRight">
-            <div className="btnComponent">
-              <Button variant="outlined" className="outlinebtn">Create</Button>
+            <div className="btncomponent">
+              <Button variant="outlined" className="outlinebtn" onClick={() => navigate("/createOrders")} >Create</Button>
             </div>
             <div className="InputComponent">
               <InputWithIcon />

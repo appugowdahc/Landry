@@ -6,8 +6,9 @@ import {useNavigate} from "react-router-dom"
 
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Ref from './Ref'
 
-import "./comp.css"
+import "./styles/comp.css"
 const useStyles = makeStyles({
   
   sname:{
@@ -82,8 +83,9 @@ function Registration() {
               </Grid>
           </Grid>
         </Grid>
-        
+        <Ref/>
     </div>
+    
 
   )
 }

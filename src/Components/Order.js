@@ -1,5 +1,5 @@
 import React from 'react';
-import "./order.css";
+import "./styles/order.css";
 
 import { faBars,faCirclePlus, faHome } from "@fortawesome/free-solid-svg-icons";
 
@@ -11,15 +11,15 @@ import {Button } from '@material-ui/core';
 function CreateOrders() {
   
   const navigate = useNavigate();
-  function homeClick() {
-    navigate("/register")   
-  }
-  function createClick() {
-    navigate('/create')   
-  }
-  function ordersClick() {
-    navigate('/orders')
-  }
+  // function homeClick() {
+  //   navigate("/register")   
+  // }
+  // function createClick() {
+  //   navigate('/createOrders')   
+  // }
+  // function ordersClick() {
+  //   navigate('createOrders/pastOrders')
+  // }
 
   // useEffect(()=>{
   //   const token =localStorage.getItem('token')
@@ -43,13 +43,13 @@ function CreateOrders() {
       <div className='ordersdiv'>
         <div className='sidetabs'>
           <div className='divicon'>
-            <FontAwesomeIcon className='icons' icon={faHome} onClick={homeClick()} />
+            <FontAwesomeIcon className='icons' icon={faHome} />
           </div>
           <div className='divicon'>
-            <FontAwesomeIcon className='icons' icon={faCirclePlus} onClick={createClick()} />
+            <FontAwesomeIcon className='icons' icon={faCirclePlus} />
           </div>
           <div className='divicon'>
-            <FontAwesomeIcon className='icons' icon={faBars} onClick={ordersClick} />
+            <FontAwesomeIcon className='icons' icon={faBars}/>
           </div>
 
         </div>

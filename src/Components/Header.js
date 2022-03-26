@@ -2,7 +2,7 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import { AppBar, Box, Toolbar, Typography } from '@material-ui/core';
-import "./comp.css"
+import "./styles/comp.css"
 const useStyles = makeStyles({
     root: {
         flexGrow: 1,

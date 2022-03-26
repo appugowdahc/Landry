@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-import "./Components/comp.css"
+import "./Components/styles/comp.css"
 import Order from './Components/Order';
 import Header from './Components/Header';
 import Login from './Components/Login';
@@ -17,12 +17,6 @@ function App() {
   // const classes = useStyles();
   return ( 
     <>
-      {/* <Header/>
-      {/* <Login/> */}
-      {/* <Registration/> */}
-      {/* <CreateOrder/> */}
-      {/* <Footer/> */}
-      <>
       <Header/>  
       <BrowserRouter>
       <Routes>
@@ -35,8 +29,6 @@ function App() {
       </Routes>   
       </BrowserRouter>    
       <Footer/>
-      </>
-      
     </>
   )
 }
