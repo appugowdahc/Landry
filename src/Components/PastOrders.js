@@ -140,9 +140,9 @@ export default function PastOrdersTable() {
           </div>
           <div className='divicon active'>
             <FontAwesomeIcon className='icons' icon={faBars} />
-          </div>
+          </div>   
         </div>
-      {orders.length === 0 && 
+      {orders.length === 0 &&        
         <div className='maindivOrder'>
           <Button variant="outlined" size="medium" className='btn2' onClick={() => navigate("/createOrders")}> Create</Button>
         </div>
