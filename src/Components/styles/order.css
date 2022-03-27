@@ -6,7 +6,7 @@
     top: -1.5px;
     left: 0px;
     width: 57px;
-    height: 851px;
+    height: 700px;
     background: #5861AE 0% 0% no-repeat padding-box;
     opacity: 1;
     display: flex;
@@ -32,14 +32,19 @@
 .ordersdiv{
  display: flex;
  flex-direction:row;
+ height: 700px;
 }
-.maindiv {
+.maindivOrder{
     position: absolute;
     top: 50%;
     left: 50%;
-    
 }
-.maindiv h3{
+.maindiv {
+    position: absolute;
+    top: 18%;
+    left: 7.5%;
+}
+.maindivOrder h3{
     text-align: left;
     letter-spacing: 0px;
     color: #222B45;
@@ -48,4 +53,5 @@
     font-size: 14px;
     margin-bottom: 10px;
 }
+
 

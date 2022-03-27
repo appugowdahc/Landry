@@ -1,10 +1,11 @@
-import React,{useState} from 'react'
-import {MenuItem,Select,InputLabel,FormControl, Grid, TextField, Button, Checkbox } from '@material-ui/core';
+import React, { useState } from 'react'
+import { Grid, TextField, Button, Checkbox } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import "./styles/comp.css"
 
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
-
+import Ref from "./Ref"
 const useStyles = makeStyles({
 
   sname: {
@@ -16,37 +17,55 @@ const useStyles = makeStyles({
 
 });
 function Registration() {
-  const [user, setUser] = useState({
-      name:"",
-      phoneNumber:"",
-      district:"",   
-      email:"",
-      state:"",
-      Address:"",
-      pinCode:""
-    
-})
-const handleChange=e=>{
-  const {name,value}=e.target
-  setUser({
-    ...user,
-    [name]:value
-  })
-}
-  
+
+
+
+
   const navigate = useNavigate();
- 
+
+  const [name, setName] = useState("")
+  const [phone, setPhone] = useState("")
+  const [district, setDistrict] = useState("")
+  const [pincode, setPin] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [state, setState] = useState("")
+  const [address, setAddress] = useState("")
+
+  const handleChange = async (event) => {
+    event.preventDefault()
+
+    const response = await fetch('http://localhost:5000/register', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name, email, password, state, phone, district, address, pincode
+      }),
+    })
+    const data = await response.json()
+    if (data.status === "OK") {
+      alert('register successfully')
+      navigate('/login')
+
+    }
+
+  }
+
+
+
   const classes = useStyles();
   return (
-    
-    <Grid container>
+   <div>
+      <Grid container>
       <Grid item xs={4}>
         <div className="floatleft2" >
           <div className="leftpart-1 colortext">Laundry Service</div>
           <div className='lg-1'>Doorstep Wash & Dryclean Service</div><br />
           <br /><br />
           <div className='lg'>Already Have Account?</div><br></br>
-          <Button variant="outlined" size="medium" className='btn2' onClick={()=>navigate("/login")}> Sign In</Button>
+          <Button variant="outlined" size="medium" className='btn2' onClick={() => navigate("/login")}> Sign In</Button>
         </div>
       </Grid>
       <Grid item xs={8} className='rightSignIn'>
@@ -55,59 +74,17 @@ const handleChange=e=>{
           <div className='regFields'>
             <Grid item xs={6} className='col1'>
               <div className='sname3'>Register</div>
-              <TextField id="standard-basic" label="Name" variant="standard" name="name" value={user.name} onChange={handleChange} /><br />
-              <TextField label="Phone Number" name="phoneno" value={user.phoneno} onChange={handleChange}   variant="standard" />
-              
-              <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                <InputLabel id="demo-simple-select-standard-label">District</InputLabel>
-                <Select
-                  labelId="demo-simple-select-standard-label"
-                  id="demo-simple-select-standard"
-                  name='district'
-                  value={user.district}
-                  onChange={handleChange}
-                  label="State"
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Nagpur</MenuItem>
-                  <MenuItem value={20}>Hyderabad</MenuItem>
-                  <MenuItem value={30}>Delhi</MenuItem>
-                  <MenuItem value={40}>Bangalore</MenuItem>
-                </Select>
-              </FormControl>
-
-              <TextField label="Pin Code" variant="standard" name="pincode" />
+              <TextField id="standard-basic1" label="Name" variant="standard" name="name" value={name} onChange={(e) => setName(e.target.value)} /><br />
+              <TextField label="Phone Number" name="phoneno" value={phone} onChange={(e) => setPhone(e.target.value)} variant="standard" />
+              <TextField label="District" name="district" value={district} onChange={(e) => setDistrict(e.target.value)} variant="standard" />
+              <TextField label="Pin Code" variant="standard" value={pincode} onChange={(e) => setPin(e.target.value)} name="pincode" />
 
             </Grid>
             <Grid item xs={6} className='col2' >
-              <TextField id="standard-basic" label="Mobile/Email" variant="standard" name="email" value={user.email} onChange={handleChange}  />
-              <TextField id="outlined-password-input" label="Password" type="password" autoComplete="current-password"  name="password" value={user.password} onChange={handleChange} />
-
-              <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
-                <InputLabel id="demo-simple-select-standard-label">State</InputLabel>
-                <Select
-                  labelId="demo-simple-select-standard-label"
-                  id="demo-simple-select-standard"
-                  name="state"
-                  value={user.state}
-                  onChange={handleChange}
-                  label="State"
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={10}>Maharashtra</MenuItem>
-                  <MenuItem value={20}>Telangana</MenuItem>
-                  <MenuItem value={30}>Andhra Pradesh</MenuItem>
-                  <MenuItem value={40}>Bangalore</MenuItem>
-                </Select>
-              </FormControl>
-
-
-
-              <TextField label="Address" variant="standard" name="address" value={user.address} onChange={handleChange} />
+              <TextField id="standard-basic2" label="Email" variant="standard" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <TextField id="outlined-password-input" label="Password" type="password" autoComplete="current-password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+              <TextField label="State" variant="standard" name="state" value={state} onChange={(e) => setState(e.target.value)} />
+              <TextField label="Address" variant="standard" name="address" value={address} onChange={(e) => setAddress(e.target.value)} />
             </Grid>
           </div>
 
@@ -116,12 +93,13 @@ const handleChange=e=>{
           </div>
 
           <div className="RegBtn">
-
-            <Button className={classes.sname}>Register</Button>
+            <Button className={classes.sname} onClick={handleChange} >Register</Button>
           </div>
         </Grid>
       </Grid>
     </Grid>
+    <Ref/>
+   </div>
   )
 }
 

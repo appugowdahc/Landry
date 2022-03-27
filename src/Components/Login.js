@@ -6,8 +6,9 @@ import {useNavigate} from "react-router-dom"
 
 import { faLock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Ref from './Ref'
 
-import "./comp.css"
+import "./styles/comp.css"
 const useStyles = makeStyles({
   
   sname:{
@@ -26,7 +27,29 @@ const useStyles = makeStyles({
 
 function Registration() {
   const navigate = useNavigate();
-  const [ value,setValue]=useState('')
+
+  const [email,setEmail]=useState('')
+  const [password,setPassword]=useState('')
+
+  const loginUser=async(event)=>{
+    event.preventDefault();
+    const response=await fetch('http://localhost:5000/login',{
+      method:'POST',
+      headers:{  
+        "Content-Type":'application/json',
+      },
+      body:JSON.stringify({email,password}),   
+    })
+    const data =await response.json()  
+    if (data.user){
+      localStorage.setItem('token',data.user)
+      alert('Login Successful')
+      navigate('/orders')
+    }else{
+      alert('wrong User Credentials')
+    }
+  }
+
   const classes = useStyles();
   return (
     <div>
@@ -43,29 +66,26 @@ function Registration() {
           <Grid item xs={6} className='rightSignIn'>
               <Grid >
               <div className={classes.sname2}>Sign In</div>
-              <TextField id="standard-basic" label="Mobile/Email" variant="standard"/><br/>
-              <div id="error masg" vlaue={value}></div>
+              <TextField id="standard-basic" label="Mobile/Email" variant="standard" value={email} onChange={(e)=> setEmail(e.target.value)}/><br/>
+              <div id="error masg"></div>
               <br></br>
-              
-              
-               
               <div className='pass'>
-              <div><TextField id="outlined-password-input" label="Password" type="password" value={value} 
-              onChange={(e)=> setValue(e.target.value)} 
-              error={!value} 
-              helperText={!value? 'Required' :'Do not share your password with anyone'} autoComplete="current-password"  /></div>
+              <TextField id="outlined-password-input" label="Password" type="password" value={password} 
+              onChange={(e)=> setPassword(e.target.value)} />
+              
               <div className='lockicon'><FontAwesomeIcon icon={faLock}/></div>
               </div>
               
               
           <div className="colortext">Forget Password?</div>
           <br></br>
-          <Button className={classes.sname}   onClick={()=>navigate("/orders")} >Sign In</Button>
+          <Button className={classes.sname} onClick={loginUser} >Sign In</Button>
               </Grid>
           </Grid>
         </Grid>
-        
+        <Ref/>
     </div>
+    
 
   )
 }
